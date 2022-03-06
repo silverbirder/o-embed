@@ -1,0 +1,7 @@
+{
+  "name": "@wcd/silver-birder.plainjs-l0eub58i",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "npx wcd-cli@latest serve ZxfjApNBd49PIJKwODGj --open"
+  }
+}
