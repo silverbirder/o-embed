@@ -56,6 +56,7 @@ export class OEmbed extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
     this.oembed = await oembedFetch(this.proxy, this.src);
+    console.log(this.oembed);
   }
 
   render() {
