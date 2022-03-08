@@ -15,12 +15,10 @@
     import { html, render } from 'lit';
     import '../dist/src/o-embed.js';
 
-    const title = 'Hello owc World!';
+    const src = 'http://hatenablog.com/oembed?url=http://staff.hatenablog.com/entry/2014/08/29/141633';
     render(
       html`
-        <o-embed .title=${title}>
-          some light-dom
-        </o-embed>
+        <o-embed .src=${src}></o-embed>
       `,
       document.querySelector('#demo')
     );

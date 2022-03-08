@@ -6,7 +6,11 @@ import '../src/o-embed.js';
 
 describe('OEmbed', () => {
   before('', () => {
-    const mockApiResponse = (body = {}) =>
+    const mockApiResponse = (body: {
+      height: string;
+      width: string;
+      html: string;
+    }) =>
       new window.Response(JSON.stringify(body), {
         status: 200,
         headers: { 'Content-type': 'application/json' },
@@ -14,11 +18,9 @@ describe('OEmbed', () => {
     const f = sinon.fake.returns(
       Promise.resolve(
         mockApiResponse({
-          body: {
-            height: '100px',
-            width: '100px',
-            html: '<span>hello</span>',
-          },
+          height: '100px',
+          width: '100px',
+          html: '<span>hello</span>',
         })
       )
     );
@@ -28,10 +30,9 @@ describe('OEmbed', () => {
     sinon.restore();
   });
   it('has a default title "Hey there" and counter 5', async () => {
-    const src =
-      'http://hatenablog.com/oembed?url=http://staff.hatenablog.com/entry/2014/08/29/141633';
-    const el = await fixture<OEmbed>(html`<o-embed src="${src}"></o-embed>`);
-    expect(el).shadowDom.to.equal('<div></div>');
+    const el = await fixture<OEmbed>(html`<o-embed></o-embed>`);
+    await expect(el).shadowDom.to.be.accessible();
+    await expect(el).shadowDom.to.be.equal('<div><span>hello</span></div>');
   });
 
   // it('increases the counter on button click', async () => {
