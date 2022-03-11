@@ -1,9 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import { OembedType, UnitValue } from './types.js';
-
-const oembedFetch = async (proxy: string, src: string): Promise<OembedType> =>
-  (await fetch(`${proxy}/${src}`, { headers: { Origin: 'null' } })).json();
+import { OEmbedRepositoryInterface, OembedType, UnitValue } from './types.js';
 
 export class OEmbed extends LitElement {
   static styles = css`
@@ -14,27 +11,29 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) src = '';
 
-  @property({ type: String }) proxy: string =
-    'https://silverbirder-cors-anywhere.herokuapp.com';
-
-  @property({ type: Object }) oembed: OembedType | undefined;
+  @property({ type: Object }) _oembed: OembedType | undefined;
 
   @property({ type: String }) height: UnitValue | undefined;
 
   @property({ type: String }) width: UnitValue | undefined;
 
+  @property({ type: Object }) repository: OEmbedRepositoryInterface | undefined;
+
   async connectedCallback() {
     super.connectedCallback();
-    this.oembed = await oembedFetch(this.proxy, this.src);
+    console.log(this._oembed);
+    console.log(this.repository);
+    this._oembed = await this.repository?.invoke(this.src);
+    console.log(this._oembed);
   }
 
   render() {
     return html`<iframe
       title="content"
-      srcdoc="${this.oembed?.html}"
+      srcdoc="${this._oembed?.html}"
       loading="lazy"
-      width="${this.width ? this.width : this.oembed?.width}"
-      height="${this.height ? this.height : this.oembed?.height}"
+      width="${this.width ? this.width : this._oembed?.width}"
+      height="${this.height ? this.height : this._oembed?.height}"
     ></iframe>`;
   }
 }

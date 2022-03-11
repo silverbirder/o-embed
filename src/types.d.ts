@@ -1,3 +1,5 @@
+import { OEmbedRepositoryInterface } from './repositories/OEmbedRepositoryInterface.js';
+
 type UnitSuffix = 'px' | 'em' | 'rem' | '%' | 'fr' | '';
 type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;
 type FlexGrowValue = Unit<''>;
@@ -17,7 +19,7 @@ type UnitValue =
 type OembedType = {
   height: UnitValue | null;
   width: UnitValue | null;
-  html: string;
+  html: String;
 };
 
-export { UnitValue, OembedType };
+export { UnitValue, OembedType, OEmbedRepositoryInterface };
