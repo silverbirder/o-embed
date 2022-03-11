@@ -1,4 +1,4 @@
-import { OEmbedRepositoryInterface } from './repositories/OEmbedRepositoryInterface.js';
+export { OembedType, OEmbedRepositoryInterface } from './repositories/types.js';
 
 type UnitSuffix = 'px' | 'em' | 'rem' | '%' | 'fr' | '';
 type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;
@@ -16,10 +16,4 @@ type UnitValue =
   | PercentValue
   | FractionValue;
 
-type OembedType = {
-  height: UnitValue | null;
-  width: UnitValue | null;
-  html: String;
-};
-
-export { UnitValue, OembedType, OEmbedRepositoryInterface };
+export { UnitValue };

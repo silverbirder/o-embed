@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
+import { OEmbedRepository } from './repositories/index.js';
 import { OEmbedRepositoryInterface, OembedType, UnitValue } from './types.js';
 
 export class OEmbed extends LitElement {
@@ -17,12 +18,20 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) width: UnitValue | undefined;
 
+  @property({ type: String }) proxy: String = '';
+
   @property({ type: Object }) repository: OEmbedRepositoryInterface | undefined;
+
+  constructor() {
+    super();
+    if (this.repository === undefined) {
+      this.repository = new OEmbedRepository(this.proxy);
+    }
+  }
 
   async connectedCallback() {
     super.connectedCallback();
     console.log(this._oembed);
-    console.log(this.repository);
     this._oembed = await this.repository?.invoke(this.src);
     console.log(this._oembed);
   }

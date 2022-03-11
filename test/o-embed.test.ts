@@ -1,38 +1,25 @@
-import sinon from 'sinon';
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 import { OEmbed } from '../src/OEmbed.js';
 import '../src/o-embed.js';
+import { OEmbedRepositoryMock } from '../src/repositories/OEmbedRepositoryMock.js';
 
 describe('OEmbed', () => {
-  before('', () => {
-    const mockApiResponse = (body: {
-      height: string;
-      width: string;
-      html: string;
-    }) =>
-      new window.Response(JSON.stringify(body), {
-        status: 200,
-        headers: { 'Content-type': 'application/json' },
-      });
-    const f = sinon.fake.returns(
-      Promise.resolve(
-        mockApiResponse({
-          height: '100px',
-          width: '100px',
-          html: '<span>hello</span>',
-        })
-      )
+  it('render iframe srcdoc from api response html.', async () => {
+    // Arrange
+    const mockHtml = '<span>hello</span>';
+    const repository = new OEmbedRepositoryMock('');
+    repository.html = mockHtml;
+
+    // Act
+    const el = await fixture<OEmbed>(
+      html`<o-embed .repository=${repository}></o-embed>`
     );
-    sinon.replace(window, 'fetch', f);
-  });
-  after('', () => {
-    sinon.restore();
-  });
-  it('has a default title "Hey there" and counter 5', async () => {
-    const el = await fixture<OEmbed>(html`<o-embed></o-embed>`);
-    await expect(el).shadowDom.to.be.accessible();
-    await expect(el).shadowDom.to.be.equal('<div><span>hello</span></div>');
+
+    // Assert
+    await expect(
+      el.shadowRoot?.querySelector('iframe')?.getAttribute('srcdoc')
+    ).to.be.equal(mockHtml);
   });
 
   // it('increases the counter on button click', async () => {
