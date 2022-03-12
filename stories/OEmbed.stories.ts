@@ -23,8 +23,7 @@ const Template: Story<ArgTypes> = ({ src, height, proxy }: ArgTypes) => html`
 
 export const Regular = Template.bind({});
 Regular.args = {
-  src: 'https://twitter.com/silver_birder/status/1475262255818473473',
-  // src: 'http://hatenablog.com/oembed?url=http://staff.hatenablog.com/entry/2014/08/29/141633',
-  height: '200px',
+  src: 'https://twitter.com/silver_birder/status/1176375655237214209',
+  height: '900px',
   proxy: 'https://silverbirder-cors-anywhere.herokuapp.com',
 };

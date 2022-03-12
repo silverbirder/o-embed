@@ -8,6 +8,7 @@ export class OEmbedRepositoryImpl implements OEmbedRepositoryInterface {
     this.proxy = proxy;
   }
 
+  // responseをdomain層で考える？
   async invoke(src: String): Promise<OembedType> {
     return (
       await fetch(`${this.proxy}/${src}`, { headers: { Origin: 'null' } })

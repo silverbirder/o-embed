@@ -16,6 +16,7 @@ export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
         headers: { Origin: 'null' },
       })
     ).json();
+    // コードリファクタリング
     return json.filter(
       (j: any) =>
         j.endpoints.filter(

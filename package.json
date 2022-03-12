@@ -2,7 +2,7 @@
   "name": "o-embed",
   "description": "Webcomponent o-embed following open-wc recommendations",
   "license": "MIT",
-  "author": "o-embed",
+  "author": "silverbirder",
   "version": "0.0.0",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
@@ -10,6 +10,7 @@
     ".": "./dist/src/index.js",
     "./o-embed.js": "./dist/src/o-embed.js"
   },
+  "types": "./src/types.d.ts",
   "scripts": {
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
     "build": "tsc",

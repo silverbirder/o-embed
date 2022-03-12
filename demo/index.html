@@ -15,11 +15,11 @@
     import { html, render } from 'lit';
     import '../dist/src/o-embed.js';
 
-    const src = 'http://hatenablog.com/oembed?url=http://staff.hatenablog.com/entry/2014/08/29/141633';
+    const src = 'https://twitter.com/silver_birder/status/1176375655237214209';
     const proxy = 'https://silverbirder-cors-anywhere.herokuapp.com';
     render(
       html`
-        <o-embed .src=${src} .proxy=${proxy} height="200px"></o-embed>
+        <o-embed .src=${src} .proxy=${proxy} height="900px"></o-embed>
       `,
       document.querySelector('#demo')
     );

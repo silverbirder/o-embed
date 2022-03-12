@@ -41,9 +41,8 @@ export class OEmbed extends LitElement {
     }
     const j = await this.providerRepository?.invoke(this.src);
     if (j.length > 0) {
-      const oembedSrc = `${j[0].endpoints[0].url}?url=${encodeURIComponent(
-        this.src
-      )}`;
+      // ちょっと無理矢理過ぎる
+      const oembedSrc = `${j[0].endpoints[0].url}?url=${this.src}`;
       this._oembed = await this.repository?.invoke(oembedSrc);
     }
   }
