@@ -1,4 +1,8 @@
-export { OembedType, OEmbedRepositoryInterface } from './repositories/types.js';
+export {
+  OembedType,
+  OEmbedRepositoryInterface,
+  ProviderRepositoryInterface,
+} from './repositories/types.js';
 
 type UnitSuffix = 'px' | 'em' | 'rem' | '%' | 'fr' | '';
 type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;

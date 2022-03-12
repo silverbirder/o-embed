@@ -1,7 +1,12 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import { OEmbedRepository } from './repositories/index.js';
-import { OEmbedRepositoryInterface, OembedType, UnitValue } from './types.js';
+import { OEmbedRepository, ProviderRepository } from './repositories/index.js';
+import {
+  OEmbedRepositoryInterface,
+  ProviderRepositoryInterface,
+  OembedType,
+  UnitValue,
+} from './types.js';
 
 export class OEmbed extends LitElement {
   static styles = css`
@@ -22,18 +27,25 @@ export class OEmbed extends LitElement {
 
   @property({ type: Object }) repository: OEmbedRepositoryInterface | undefined;
 
-  constructor() {
-    super();
-    if (this.repository === undefined) {
-      this.repository = new OEmbedRepository(this.proxy);
-    }
-  }
+  @property({ type: Object }) providerRepository:
+    | ProviderRepositoryInterface
+    | undefined;
 
   async connectedCallback() {
     super.connectedCallback();
-    console.log(this._oembed);
-    this._oembed = await this.repository?.invoke(this.src);
-    console.log(this._oembed);
+    if (this.repository === undefined) {
+      this.repository = new OEmbedRepository(this.proxy);
+    }
+    if (this.providerRepository === undefined) {
+      this.providerRepository = new ProviderRepository(this.proxy);
+    }
+    const j = await this.providerRepository?.invoke(this.src);
+    if (j.length > 0) {
+      const oembedSrc = `${j[0].endpoints[0].url}?url=${encodeURIComponent(
+        this.src
+      )}`;
+      this._oembed = await this.repository?.invoke(oembedSrc);
+    }
   }
 
   render() {

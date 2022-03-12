@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 import { OEmbed } from '../src/OEmbed.js';
 import '../src/o-embed.js';
-import { OEmbedRepositoryMock } from '../src/repositories/OEmbedRepositoryMock.js';
+import { OEmbedRepositoryMock } from '../src/repositories/OEmbedRepository/OEmbedRepositoryMock.js';
 
 describe('OEmbed', () => {
   it('render iframe srcdoc from api response html.', async () => {

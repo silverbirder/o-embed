@@ -1,4 +1,4 @@
-import { OembedType } from '../types.js';
+import { OembedType } from '../../types.js';
 import { OEmbedRepositoryInterface } from './OEmbedRepositoryInterface.js';
 
 export class OEmbedRepositoryImpl implements OEmbedRepositoryInterface {
