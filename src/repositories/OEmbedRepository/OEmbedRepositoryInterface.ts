@@ -1,5 +1,5 @@
 import { OembedType } from '../types.js';
 
 export interface OEmbedRepositoryInterface {
-  invoke(src: String): Promise<OembedType>;
+  invoke(src: string): Promise<OembedType>;
 }

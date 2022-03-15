@@ -25,11 +25,10 @@ describe('ProviderRepositoryImpl', () => {
     fetch.onCall(0).returns(jsonOk(providers));
     const repository = new ProviderRepository('');
 
-    const actual = await repository.invoke(
+    const actuals = await repository.invoke(
       'https://twitter.com/xxxx/status/xxxx'
     );
 
-    console.log(actual);
-    expect(actual).to.be.length(1);
+    expect(actuals[0]).to.be.contain({ provider_name: 'Twitter' });
   });
 });

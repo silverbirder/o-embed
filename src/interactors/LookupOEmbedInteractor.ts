@@ -16,7 +16,7 @@ export class LookupOEmbedInteractor {
     this.oEmbedRepository = oEmbedRepository;
   }
 
-  async invoke(url: String): Promise<any> {
+  async invoke(url: string): Promise<any> {
     const j = await this.providerRepository.invoke(url);
     if (j.length === 0) return {};
     const oembedSrc = `${j[0].endpoints[0].url}?url=${url}`;

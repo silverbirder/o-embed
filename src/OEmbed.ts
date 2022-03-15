@@ -19,7 +19,7 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) width: UnitValue | undefined;
 
-  @property({ type: String }) proxy: String = '';
+  @property({ type: String }) proxy: string = '';
 
   @property({ type: Object }) interactor: any | undefined;
 

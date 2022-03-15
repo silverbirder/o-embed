@@ -5,7 +5,7 @@ import { ProviderRepositoryInterface } from './ProviderRepository/ProviderReposi
 type OembedType = {
   height: UnitValue | null;
   width: UnitValue | null;
-  html: String;
+  html: string;
 };
 
 export { OembedType, OEmbedRepositoryInterface, ProviderRepositoryInterface };

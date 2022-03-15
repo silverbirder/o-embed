@@ -2,16 +2,16 @@ import { OembedType } from '../types.js';
 import { OEmbedRepositoryInterface } from './OEmbedRepositoryInterface.js';
 
 export class OEmbedRepositoryMock implements OEmbedRepositoryInterface {
-  proxy: String = '';
+  proxy: string = '';
 
-  html: String = '';
+  html: string = '';
 
-  constructor(proxy: String) {
+  constructor(proxy: string) {
     this.proxy = proxy;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  invoke(src: String): Promise<OembedType> {
+  invoke(src: string): Promise<OembedType> {
     return new Promise(resolve => {
       resolve({ html: this.html, width: '0px', height: '0px' });
     });
