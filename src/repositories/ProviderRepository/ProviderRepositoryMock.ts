@@ -10,9 +10,8 @@ export class ProviderRepositoryMock implements ProviderRepositoryInterface {
     this.proxy = proxy;
   }
 
+  // eslint-disable-next-line class-methods-use-this,@typescript-eslint/no-unused-vars
   invoke(src: string): Promise<Array<ProviderType>> {
-    console.log(src);
-    console.log(this.proxy);
     return new Promise(resolve => {
       resolve([]);
     });

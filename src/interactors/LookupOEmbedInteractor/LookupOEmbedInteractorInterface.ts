@@ -1,3 +1,11 @@
+import {
+  OEmbedRepositoryInterface,
+  OembedType,
+  ProviderRepositoryInterface,
+} from '../../types.js';
+
 export interface LookupOEmbedInteractorInterface {
-  invoke(src: string): Promise<any>;
+  providerRepository: ProviderRepositoryInterface;
+  oEmbedRepository: OEmbedRepositoryInterface;
+  invoke(src: string): Promise<OembedType | {}>;
 }

@@ -5,12 +5,14 @@ import {
 } from '../../types.js';
 import { LookupOEmbedInteractorInterface } from './LookupOEmbedInteractorInterface.js';
 
-export class LookupOEmbedInteractorImpl
+export class LookupOEmbedInteractorMock
   implements LookupOEmbedInteractorInterface
 {
   providerRepository: ProviderRepositoryInterface;
 
   oEmbedRepository: OEmbedRepositoryInterface;
+
+  return: OembedType | {} = {};
 
   constructor(
     providerRepository: ProviderRepositoryInterface,
@@ -20,12 +22,8 @@ export class LookupOEmbedInteractorImpl
     this.oEmbedRepository = oEmbedRepository;
   }
 
+  // eslint-disable-next-line class-methods-use-this,@typescript-eslint/no-unused-vars
   async invoke(url: string): Promise<OembedType | {}> {
-    const providers = await this.providerRepository.invoke(url);
-    if (providers.length === 0 || providers[0].endpoints.length === 0)
-      return {};
-    return this.oEmbedRepository?.invoke(
-      `${providers[0].endpoints[0].url}?url=${url}`
-    );
+    return this.return;
   }
 }
