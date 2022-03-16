@@ -1,5 +1,5 @@
-// import { OembedType } from '../types.js';
+import { ProviderType } from '../types.js';
 
 export interface ProviderRepositoryInterface {
-  invoke(src: string): Promise<any>;
+  invoke(src: string): Promise<Array<ProviderType>>;
 }

@@ -1,1 +1,1 @@
-export { LookupOEmbedInteractor } from './LookupOEmbedInteractor.js';
+export { LookupOEmbedInteractorImpl as LookupOEmbedInteractor } from './LookupOEmbedInteractor/LookupOEmbedInteractorImpl.js';

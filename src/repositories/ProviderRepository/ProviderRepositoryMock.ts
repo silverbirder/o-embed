@@ -1,4 +1,4 @@
-// import { OembedType } from '../types.js';
+import { ProviderType } from '../types.js';
 import { ProviderRepositoryInterface } from './ProviderRepositoryInterface.js';
 
 export class ProviderRepositoryMock implements ProviderRepositoryInterface {
@@ -10,10 +10,11 @@ export class ProviderRepositoryMock implements ProviderRepositoryInterface {
     this.proxy = proxy;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  invoke(src: string): Promise<any> {
+  invoke(src: string): Promise<Array<ProviderType>> {
+    console.log(src);
+    console.log(this.proxy);
     return new Promise(resolve => {
-      resolve({ html: this.html, width: '0px', height: '0px' });
+      resolve([]);
     });
   }
 }

@@ -1,16 +1,5 @@
-// import { OembedType } from '../../types.js';
+import { ProviderType, EndpointType } from '../types.js';
 import { ProviderRepositoryInterface } from './ProviderRepositoryInterface.js';
-
-type EndpointType = {
-  schemes: Array<string>;
-  url: string;
-};
-
-type ProviderType = {
-  providerName: string;
-  providerUrl: string;
-  endpoints: Array<EndpointType>;
-};
 
 export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
   proxy: string = '';
@@ -21,7 +10,7 @@ export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
     this.proxy = proxy;
   }
 
-  async invoke(src: string): Promise<any> {
+  async invoke(src: string): Promise<Array<ProviderType>> {
     const providers: Array<ProviderType> = await (
       await fetch(`${this.proxy}/${this.provider}`, {
         headers: { Origin: 'null' },

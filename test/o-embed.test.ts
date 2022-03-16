@@ -8,6 +8,7 @@ describe('OEmbed', () => {
   it('render iframe srcdoc from api response html.', async () => {
     // Arrange
     const mockHtml = '<span>hello</span>';
+    // repositoryじゃなくてinteractorをmockする
     const repository = new OEmbedRepositoryMock('');
     repository.html = mockHtml;
 

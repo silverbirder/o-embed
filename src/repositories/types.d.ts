@@ -8,4 +8,21 @@ type OembedType = {
   html: string;
 };
 
-export { OembedType, OEmbedRepositoryInterface, ProviderRepositoryInterface };
+type EndpointType = {
+  schemes: Array<string>;
+  url: string;
+};
+
+type ProviderType = {
+  providerName: string;
+  providerUrl: string;
+  endpoints: Array<EndpointType>;
+};
+
+export {
+  OembedType,
+  OEmbedRepositoryInterface,
+  ProviderRepositoryInterface,
+  ProviderType,
+  EndpointType,
+};

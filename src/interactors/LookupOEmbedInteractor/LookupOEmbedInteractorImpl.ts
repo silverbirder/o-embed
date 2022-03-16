@@ -1,9 +1,12 @@
 import {
   OEmbedRepositoryInterface,
   ProviderRepositoryInterface,
-} from '../types.js';
+} from '../../types.js';
+import { LookupOEmbedInteractorInterface } from './LookupOEmbedInteractorInterface.js';
 
-export class LookupOEmbedInteractor {
+export class LookupOEmbedInteractorImpl
+  implements LookupOEmbedInteractorInterface
+{
   providerRepository: ProviderRepositoryInterface;
 
   oEmbedRepository: OEmbedRepositoryInterface;
