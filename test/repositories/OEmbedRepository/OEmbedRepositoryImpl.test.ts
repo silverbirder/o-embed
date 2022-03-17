@@ -1,7 +1,7 @@
 import { expect } from '@open-wc/testing';
 import { SinonStub, stub } from 'sinon';
-import { ProviderRepository } from '../../../src/repositories/index.js';
-import providers from './providers.json' assert { type: 'json' };
+import { OEmbedRepository } from '../../../src/repositories/index.js';
+import oembed from './oembed.json' assert { type: 'json' };
 
 const jsonOk = (body: any) => {
   const mockResponse = new window.Response(JSON.stringify(body), {
@@ -13,7 +13,7 @@ const jsonOk = (body: any) => {
   return Promise.resolve(mockResponse);
 };
 
-describe('ProviderRepositoryImpl', () => {
+describe('OEmbedRepository', () => {
   let fetch: SinonStub<any>;
   beforeEach(() => {
     fetch = stub(window, 'fetch');
@@ -23,27 +23,25 @@ describe('ProviderRepositoryImpl', () => {
   });
   it('invoke and data is exists.', async () => {
     // Arrange
-    fetch.onCall(0).returns(jsonOk(providers));
-    const repository = new ProviderRepository('');
+    fetch.onCall(0).returns(jsonOk(oembed));
+    const repository = new OEmbedRepository('');
 
     // Act
-    const actuals = await repository.invoke(
-      'https://twitter.com/xxxx/status/xxxx'
-    );
+    const actual = await repository.invoke('');
 
     // Assert
-    expect(actuals[0]).to.be.contain({ provider_name: 'Twitter' });
+    expect(actual).to.be.property('html');
   });
 
   it('invoke and data is not exists.', async () => {
     // Arrange
-    fetch.onCall(0).returns(jsonOk(providers));
-    const repository = new ProviderRepository('');
+    fetch.onCall(0).returns(jsonOk({}));
+    const repository = new OEmbedRepository('');
 
     // Act
-    const actuals = await repository.invoke('');
+    const actual = await repository.invoke('');
 
     // Assert
-    expect(actuals).to.be.length(0);
+    expect(actual).to.not.be.property('html');
   });
 });

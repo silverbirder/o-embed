@@ -4,16 +4,16 @@ import { ProviderRepositoryInterface } from './ProviderRepositoryInterface.js';
 export class ProviderRepositoryMock implements ProviderRepositoryInterface {
   proxy: string = '';
 
-  html: string = '';
+  providers: Array<any> = [];
 
   constructor(proxy: string) {
     this.proxy = proxy;
   }
 
-  // eslint-disable-next-line class-methods-use-this,@typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   invoke(src: string): Promise<Array<ProviderType>> {
     return new Promise(resolve => {
-      resolve([]);
+      resolve(this.providers);
     });
   }
 }
