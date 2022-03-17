@@ -20,10 +20,14 @@ export class LookupOEmbedInteractorImpl
     this.oEmbedRepository = oEmbedRepository;
   }
 
-  async invoke(url: string): Promise<OembedType | {}> {
+  async invoke(url: string): Promise<OembedType> {
     const providers = await this.providerRepository.invoke(url);
     if (providers.length === 0 || providers[0].endpoints.length === 0)
-      return {};
+      return {
+        height: null,
+        width: null,
+        html: '',
+      };
     return this.oEmbedRepository?.invoke(
       `${providers[0].endpoints[0].url}?url=${url}`
     );

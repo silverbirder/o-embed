@@ -7,5 +7,5 @@ import {
 export interface LookupOEmbedInteractorInterface {
   providerRepository: ProviderRepositoryInterface;
   oEmbedRepository: OEmbedRepositoryInterface;
-  invoke(src: string): Promise<OembedType | {}>;
+  invoke(src: string): Promise<OembedType>;
 }

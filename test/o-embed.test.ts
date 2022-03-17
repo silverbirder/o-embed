@@ -15,6 +15,8 @@ describe('OEmbed', () => {
     );
     const mockHtml = '<span>hello</span>';
     interactor.return = {
+      height: null,
+      width: null,
       html: mockHtml,
     };
 
@@ -28,25 +30,4 @@ describe('OEmbed', () => {
       el.shadowRoot?.querySelector('iframe')?.getAttribute('srcdoc')
     ).to.be.equal(mockHtml);
   });
-
-  // it('increases the counter on button click', async () => {
-  //   const el = await fixture<OEmbed>(html`<o-embed></o-embed>`);
-  //   el.shadowRoot!.querySelector('button')!.click();
-
-  //   expect(el.counter).to.equal(6);
-  // });
-
-  // it('can override the title via attribute', async () => {
-  //   const el = await fixture<OEmbed>(
-  //     html`<o-embed title="attribute title"></o-embed>`
-  //   );
-
-  //   expect(el.title).to.equal('attribute title');
-  // });
-
-  // it('passes the a11y audit', async () => {
-  //   const el = await fixture<OEmbed>(html`<o-embed></o-embed>`);
-
-  //   await expect(el).shadowDom.to.be.accessible();
-  // });
 });

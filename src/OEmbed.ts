@@ -21,7 +21,7 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) proxy: string = '';
 
-  @property({ type: Object }) interactor: any | undefined;
+  @property({ type: Object }) interactor: LookupOEmbedInteractor | undefined;
 
   async connectedCallback() {
     super.connectedCallback();

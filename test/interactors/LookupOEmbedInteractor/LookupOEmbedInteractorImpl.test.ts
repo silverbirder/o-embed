@@ -35,6 +35,6 @@ describe('LookupOEmbedInteractor', () => {
     const actual = await interactor.invoke('');
 
     // Assert
-    expect(actual).to.not.be.property('html');
+    expect(actual.html).to.be.eq('');
   });
 });
