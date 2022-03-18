@@ -8,3 +8,6 @@
 * proxyとsrcを必須にする
 * storybookをちゃんとする(公開もしよう)
 * demoもちゃんとする
+* RepositoryのResponseTypeと、ReponseをWrapしたDomainを書く。
+* iframeで表示する前に、widthとheightを設定してぐらつかせないようにする。
+* build結果をbadgeにする
