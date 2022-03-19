@@ -21,7 +21,7 @@ describe('OEmbedRepository', () => {
   afterEach(() => {
     fetch.restore();
   });
-  it('invoke and data is exists.', async () => {
+  it('get and data is exists.', async () => {
     // Arrange
     fetch.onCall(0).returns(jsonOk(oembed));
     const repository = new OEmbedRepository('');
@@ -33,7 +33,7 @@ describe('OEmbedRepository', () => {
     expect(actual).to.be.property('html');
   });
 
-  it('invoke and data is not exists.', async () => {
+  it('get and data is not exists.', async () => {
     // Arrange
     fetch.onCall(0).returns(jsonOk({}));
     const repository = new OEmbedRepository('');

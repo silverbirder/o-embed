@@ -1,10 +1,10 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
-import { OEmbed } from '../src/OEmbed.js';
-import '../src/o-embed.js';
-import { LookupOEmbedInteractorMock } from '../src/interactors/LookupOEmbedInteractor/LookupOEmbedInteractorMock.js';
-import { ProviderRepositoryMock } from '../src/repositories/ProviderRepository/ProviderRepositoryMock.js';
-import { OEmbedRepositoryMock } from '../src/repositories/OEmbedRepository/OEmbedRepositoryMock.js';
+import { OEmbed } from '../../src/presenters/OEmbed.js';
+import '../../src/o-embed.js';
+import { LookupOEmbedInteractorMock } from '../../src/interactors/LookupOEmbedInteractor/LookupOEmbedInteractorMock.js';
+import { ProviderRepositoryMock } from '../../src/repositories/ProviderRepository/ProviderRepositoryMock.js';
+import { OEmbedRepositoryMock } from '../../src/repositories/OEmbedRepository/OEmbedRepositoryMock.js';
 
 describe('OEmbed', () => {
   it('render iframe srcdoc from api response html.', async () => {

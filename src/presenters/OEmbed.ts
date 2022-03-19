@@ -1,10 +1,10 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import { OembedDomainInterface } from './domains/types.js';
-import { LookupOEmbedInteractor } from './interactors/index.js';
-import { LookupOEmbedInteractorInterface } from './interactors/types.js';
-import { OEmbedRepository, ProviderRepository } from './repositories/index.js';
-import { UnitValue } from './types.js';
+import { OembedDomainInterface } from '../domains/types.js';
+import { LookupOEmbedInteractor } from '../interactors/index.js';
+import { LookupOEmbedInteractorInterface } from '../interactors/types.js';
+import { OEmbedRepository, ProviderRepository } from '../repositories/index.js';
+import { UnitValue } from '../types.js';
 
 export class OEmbed extends LitElement {
   static styles = css`

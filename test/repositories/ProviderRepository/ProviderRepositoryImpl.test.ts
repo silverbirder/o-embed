@@ -21,7 +21,7 @@ describe('ProviderRepositoryImpl', () => {
   afterEach(() => {
     fetch.restore();
   });
-  it('invoke and data is exists.', async () => {
+  it('lookup and data is exists.', async () => {
     // Arrange
     fetch.onCall(0).returns(jsonOk(providers));
     const repository = new ProviderRepository('');
@@ -35,7 +35,7 @@ describe('ProviderRepositoryImpl', () => {
     expect(actuals[0].name).to.be.equal('Twitter');
   });
 
-  it('invoke and data is not exists.', async () => {
+  it('lookup and data is not exists.', async () => {
     // Arrange
     fetch.onCall(0).returns(jsonOk(providers));
     const repository = new ProviderRepository('');

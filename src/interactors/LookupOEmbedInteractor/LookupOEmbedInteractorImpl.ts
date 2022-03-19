@@ -28,6 +28,6 @@ export class LookupOEmbedInteractorImpl
     }
     return this.oEmbedRepository?.get(
       `${providers[0].endpoints[0].url}?url=${url}`
-    );
+    ); // TODO: urlにマッチしたendpointsを返すこと
   }
 }

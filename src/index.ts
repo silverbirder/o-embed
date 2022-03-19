@@ -1,1 +1,1 @@
-export { OEmbed } from './OEmbed.js';
+export { OEmbed } from './presenters/OEmbed.js';
