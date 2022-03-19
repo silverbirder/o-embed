@@ -5,14 +5,15 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i o-embed
+npm i @silverbirder/o-embed
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import 'o-embed/o-embed.js';
+  import { OEmbed } from "@silverbirder/o-embed";
+  window.customElements.define("o-embed", OEmbed);
 </script>
 
 <o-embed></o-embed>

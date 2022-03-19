@@ -1,28 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <style>
-    body {
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <div id="demo"></div>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import { OEmbed } from 'https://cdn.skypack.dev/@silverbirder/o-embed';
 
-  <script type="module">
-    import { html, render } from 'lit';
-    import '../dist/src/o-embed.js';
+      window.customElements.define('o-embed', OEmbed);
+    </script>
 
-    const src = 'https://twitter.com/silver_birder/status/1176375655237214209';
-    const proxy = 'https://silverbirder-cors-anywhere.herokuapp.com';
-    render(
-      html`
-        <o-embed .src=${src} .proxy=${proxy} height="900px"></o-embed>
-      `,
-      document.querySelector('#demo')
-    );
-  </script>
-</body>
+    <o-embed
+      src="https://twitter.com/silver_birder/status/1176375655237214209"
+      proxy="https://silverbirder-cors-anywhere.herokuapp.com"
+      height="900px"
+    ></o-embed>
+  </body>
 </html>
