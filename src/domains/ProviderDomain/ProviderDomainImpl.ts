@@ -1,3 +1,4 @@
+import { wildcardToRegExp } from '../../utils/Utils.js';
 import {
   ProviderDomainInterface,
   ProviderEndpoint,
@@ -25,25 +26,19 @@ export class ProviderDomainImpl implements ProviderDomainInterface {
   }
 
   matchSchemeByUrl(url: string): boolean {
-    return (
-      this.endpoints.filter(
-        (e: ProviderEndpoint) =>
-          e?.schemes?.filter((s: string) => {
-            const re = new RegExp(s);
-            return re.test(url);
-          }).length > 0
-      ).length > 0
-    );
+    return this._filterEndpoints(url).length > 0;
   }
 
   getUrlByMatchScheme(url: string): string {
-    const matchedEndpoints = this.endpoints.filter(
-      (e: ProviderEndpoint) =>
-        e?.schemes?.filter((s: string) => {
-          const re = new RegExp(s);
-          return re.test(url);
-        }).length > 0
-    );
+    const matchedEndpoints = this._filterEndpoints(url);
     return matchedEndpoints.length > 0 ? matchedEndpoints[0].url : '';
+  }
+
+  _filterEndpoints(url: string): Array<ProviderEndpoint> {
+    return this.endpoints.filter(
+      (e: ProviderEndpoint) =>
+        e?.schemes?.filter((s: string) => wildcardToRegExp(s).test(url))
+          .length > 0
+    );
   }
 }

@@ -22,7 +22,7 @@ describe('OEmbed', () => {
 
     // Act
     const el = await fixture<OEmbed>(
-      html`<o-embed .interactor=${interactor}></o-embed>`
+      html`<o-embed ._interactor=${interactor}></o-embed>`
     );
 
     // Assert

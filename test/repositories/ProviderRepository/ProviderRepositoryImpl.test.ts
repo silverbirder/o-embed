@@ -46,4 +46,18 @@ describe('ProviderRepositoryImpl', () => {
     // Assert
     expect(actuals).to.be.length(0);
   });
+
+  it('lookup and data is exists (only wildcard).', async () => {
+    // Arrange
+    fetch.onCall(0).returns(jsonOk(providers));
+    const repository = new ProviderRepository('');
+
+    // Act
+    const actuals = await repository.lookup(
+      'https://www.youtube.com/watch?v=xxxx'
+    );
+
+    // Assert
+    expect(actuals[0].name).to.be.equal('YouTube');
+  });
 });
