@@ -24,6 +24,6 @@ const Template: Story<ArgTypes> = ({ src, height, proxy }: ArgTypes) => html`
 export const Regular = Template.bind({});
 Regular.args = {
   src: 'https://twitter.com/silver_birder/status/1176375655237214209',
-  height: '900px',
+  height: '800px',
   proxy: 'https://silverbirder-cors-anywhere.herokuapp.com',
 };
