@@ -48,4 +48,26 @@ describe('ProviderDomain', () => {
     // Assert
     expect(actual).to.be.equal(false);
   });
+
+  it('getUrlByMatchScheme', async () => {
+    // Arrange
+    const url = 'https://publish.twitter.com/oembed';
+    const providerDomain = new ProviderDomain({
+      ...mockInput,
+      endpoints: [
+        {
+          schemes: ['https://twitter.com/*'],
+          url,
+        },
+      ],
+    });
+
+    // Act
+    const actual = providerDomain.getUrlByMatchScheme(
+      'https://twitter.com/xxxx/status/xxxx'
+    );
+
+    // Assert
+    expect(actual).to.be.equal(url);
+  });
 });

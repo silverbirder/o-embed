@@ -27,7 +27,7 @@ export class LookupOEmbedInteractorImpl
       return new OembedDomain({});
     }
     return this.oEmbedRepository?.get(
-      `${providers[0].endpoints[0].url}?url=${url}`
-    ); // TODO: urlにマッチしたendpointsを返すこと
+      `${providers[0].getUrlByMatchScheme(url)}?url=${url}`
+    );
   }
 }

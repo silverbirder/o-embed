@@ -8,4 +8,5 @@ export interface ProviderDomainInterface {
   url: string;
   endpoints: Array<ProviderEndpoint>;
   matchSchemeByUrl(url: string): boolean;
+  getUrlByMatchScheme(url: string): string;
 }

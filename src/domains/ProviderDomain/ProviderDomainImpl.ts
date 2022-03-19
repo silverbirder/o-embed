@@ -35,4 +35,15 @@ export class ProviderDomainImpl implements ProviderDomainInterface {
       ).length > 0
     );
   }
+
+  getUrlByMatchScheme(url: string): string {
+    const matchedEndpoints = this.endpoints.filter(
+      (e: ProviderEndpoint) =>
+        e?.schemes?.filter((s: string) => {
+          const re = new RegExp(s);
+          return re.test(url);
+        }).length > 0
+    );
+    return matchedEndpoints.length > 0 ? matchedEndpoints[0].url : '';
+  }
 }
