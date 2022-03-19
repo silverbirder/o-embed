@@ -32,7 +32,7 @@ describe('ProviderRepositoryImpl', () => {
     );
 
     // Assert
-    expect(actuals[0]).to.be.contain({ provider_name: 'Twitter' });
+    expect(actuals[0].name).to.be.equal('Twitter');
   });
 
   it('invoke and data is not exists.', async () => {

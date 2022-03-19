@@ -1,4 +1,6 @@
-import { ProviderType, EndpointType } from '../types.js';
+import { ProviderDomain } from '../../domains/index.js';
+import { ProviderDomainInterface } from '../../domains/types.js';
+import { ProviderType } from '../types.js';
 import { ProviderRepositoryInterface } from './ProviderRepositoryInterface.js';
 
 export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
@@ -10,26 +12,31 @@ export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
     this.proxy = proxy;
   }
 
-  async lookup(src: string): Promise<Array<ProviderType>> {
-    const providers: Array<ProviderType> = await (
+  async _fetch(): Promise<Array<ProviderType>> {
+    const jsons = await (
       await fetch(`${this.proxy}/${this.provider}`, {
         headers: { Origin: 'null' },
       })
     ).json();
-    return providers
-      .map((p: ProviderType): ProviderType => {
-        const endpoints = p.endpoints.filter(
-          (e: EndpointType) =>
-            e?.schemes?.filter((s: string) => {
-              const re = new RegExp(s);
-              return re.test(src);
-            }).length > 0
-        );
-        return {
-          ...p,
-          endpoints,
-        };
-      })
-      .filter((p: ProviderType) => p.endpoints.length > 0);
+    return jsons.map((json: any) => ({
+      providerName: json.provider_name,
+      providerUrl: json.provider_url,
+      endpoints: json.endpoints,
+    }));
+  }
+
+  async lookup(url: string): Promise<Array<ProviderDomainInterface>> {
+    const response = await this._fetch();
+    const providerDomains = response.map(
+      r =>
+        new ProviderDomain({
+          name: r.providerName,
+          url: r.providerUrl,
+          endpoints: r.endpoints,
+        })
+    );
+    return providerDomains.filter((p: ProviderDomainInterface) =>
+      p.matchSchemeByUrl(url)
+    );
   }
 }

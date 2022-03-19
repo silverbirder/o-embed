@@ -1,5 +1,5 @@
-import { ProviderType } from '../types.js';
+import { ProviderDomainInterface } from '../../domains/types.js';
 
 export interface ProviderRepositoryInterface {
-  lookup(src: string): Promise<Array<ProviderType>>;
+  lookup(url: string): Promise<Array<ProviderDomainInterface>>;
 }

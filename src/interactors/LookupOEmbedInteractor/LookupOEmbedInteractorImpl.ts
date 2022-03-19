@@ -23,7 +23,7 @@ export class LookupOEmbedInteractorImpl
 
   async invoke(url: string): Promise<OembedDomainInterface> {
     const providers = await this.providerRepository.lookup(url);
-    if (providers.length === 0 || providers[0].endpoints.length === 0) {
+    if (providers.length === 0) {
       return new OembedDomain({});
     }
     return this.oEmbedRepository?.get(
