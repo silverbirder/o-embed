@@ -9,6 +9,7 @@ src
 stories
 test
 .editorconfig
+build-storybook.log
 TODO.md
 tsconfig.json
 web-dev-server.config.mjs

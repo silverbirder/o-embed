@@ -20,7 +20,8 @@
     "test": "tsc && wtr --coverage",
     "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wtr --watch\"",
     "storybook": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds -c .storybook/server.mjs\"",
-    "build-storybook": "tsc && build-storybook"
+    "build-storybook": "tsc && build-storybook",
+    "chromatic": "npx chromatic --project-token=efed1449cef5"
   },
   "dependencies": {
     "lit": "^2.0.0-rc.2"
