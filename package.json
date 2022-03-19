@@ -78,7 +78,6 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npm test",
       "eslint --fix",
       "prettier --write"
     ]
