@@ -27,7 +27,7 @@ describe('OEmbedRepository', () => {
     const repository = new OEmbedRepository('');
 
     // Act
-    const actual = await repository.invoke('');
+    const actual = await repository.get('');
 
     // Assert
     expect(actual).to.be.property('html');
@@ -39,7 +39,7 @@ describe('OEmbedRepository', () => {
     const repository = new OEmbedRepository('');
 
     // Act
-    const actual = await repository.invoke('');
+    const actual = await repository.get('');
 
     // Assert
     expect(actual.html).to.be.equal('');

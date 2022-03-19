@@ -15,7 +15,7 @@ export class OEmbedRepositoryImpl implements OEmbedRepositoryInterface {
     ).json();
   }
 
-  async invoke(src: string): Promise<OembedDomain> {
+  async get(src: string): Promise<OembedDomain> {
     const response: OembedType = await this._fetch(src);
     const oembedDomain = new OembedDomain({
       html: response.html,

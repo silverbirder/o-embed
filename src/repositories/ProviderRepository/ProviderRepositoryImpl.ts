@@ -10,7 +10,7 @@ export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
     this.proxy = proxy;
   }
 
-  async invoke(src: string): Promise<Array<ProviderType>> {
+  async lookup(src: string): Promise<Array<ProviderType>> {
     const providers: Array<ProviderType> = await (
       await fetch(`${this.proxy}/${this.provider}`, {
         headers: { Origin: 'null' },

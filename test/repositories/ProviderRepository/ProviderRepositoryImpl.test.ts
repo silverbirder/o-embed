@@ -27,7 +27,7 @@ describe('ProviderRepositoryImpl', () => {
     const repository = new ProviderRepository('');
 
     // Act
-    const actuals = await repository.invoke(
+    const actuals = await repository.lookup(
       'https://twitter.com/xxxx/status/xxxx'
     );
 
@@ -41,7 +41,7 @@ describe('ProviderRepositoryImpl', () => {
     const repository = new ProviderRepository('');
 
     // Act
-    const actuals = await repository.invoke('');
+    const actuals = await repository.lookup('');
 
     // Assert
     expect(actuals).to.be.length(0);

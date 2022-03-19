@@ -11,7 +11,7 @@ export class ProviderRepositoryMock implements ProviderRepositoryInterface {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  invoke(src: string): Promise<Array<ProviderType>> {
+  lookup(src: string): Promise<Array<ProviderType>> {
     return new Promise(resolve => {
       resolve(this.providers);
     });
