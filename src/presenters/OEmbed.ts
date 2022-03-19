@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
 import { OembedDomainInterface } from '../domains/types.js';
 import { LookupOEmbedInteractor } from '../interactors/index.js';
@@ -15,27 +15,31 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) src = '';
 
-  @property({ type: Object }) _oembed: OembedDomainInterface | undefined;
-
   @property({ type: String }) height: UnitValue | undefined;
 
   @property({ type: String }) width: UnitValue | undefined;
 
   @property({ type: String }) proxy: string = '';
 
-  @property({ type: Object }) interactor:
-    | LookupOEmbedInteractorInterface
-    | undefined;
+  @property({ type: Object }) _oembed: OembedDomainInterface | undefined;
+
+  _interactor: LookupOEmbedInteractorInterface | undefined;
 
   async connectedCallback() {
     super.connectedCallback();
-    if (this.interactor === undefined) {
-      this.interactor = new LookupOEmbedInteractor(
+    if (this._interactor === undefined) {
+      this._interactor = new LookupOEmbedInteractor(
         new ProviderRepository(this.proxy),
         new OEmbedRepository(this.proxy)
       );
     }
-    this._oembed = await this.interactor.invoke(this.src);
+    this._oembed = await this._interactor.invoke(this.src);
+  }
+
+  async willUpdate(changedProperties: PropertyValues) {
+    if (changedProperties.has('src')) {
+      this._oembed = await this._interactor?.invoke(this.src);
+    }
   }
 
   render() {

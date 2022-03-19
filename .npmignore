@@ -8,6 +8,7 @@ src
 stories
 test
 .editorconfig
+TODO.md
 tsconfig.json
 web-dev-server.config.mjs
 web-test-runner.config.mjs
