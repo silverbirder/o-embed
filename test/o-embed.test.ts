@@ -15,8 +15,8 @@ describe('OEmbed', () => {
     );
     const mockHtml = '<span>hello</span>';
     interactor.return = {
-      height: null,
-      width: null,
+      height: '0px',
+      width: '0px',
       html: mockHtml,
     };
 

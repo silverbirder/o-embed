@@ -11,3 +11,4 @@
 * RepositoryのResponseTypeと、ReponseをWrapしたDomainを書く。
 * iframeで表示する前に、widthとheightを設定してぐらつかせないようにする。
 * build結果をbadgeにする
+* apiのresponseをvalid?する？ajv.

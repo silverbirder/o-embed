@@ -1,8 +1,10 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
+import { OembedDomainInterface } from './domains/types.js';
 import { LookupOEmbedInteractor } from './interactors/index.js';
+import { LookupOEmbedInteractorInterface } from './interactors/types.js';
 import { OEmbedRepository, ProviderRepository } from './repositories/index.js';
-import { OembedType, UnitValue } from './types.js';
+import { UnitValue } from './types.js';
 
 export class OEmbed extends LitElement {
   static styles = css`
@@ -13,7 +15,7 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) src = '';
 
-  @property({ type: Object }) _oembed: OembedType | undefined;
+  @property({ type: Object }) _oembed: OembedDomainInterface | undefined;
 
   @property({ type: String }) height: UnitValue | undefined;
 
@@ -21,7 +23,9 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) proxy: string = '';
 
-  @property({ type: Object }) interactor: LookupOEmbedInteractor | undefined;
+  @property({ type: Object }) interactor:
+    | LookupOEmbedInteractorInterface
+    | undefined;
 
   async connectedCallback() {
     super.connectedCallback();

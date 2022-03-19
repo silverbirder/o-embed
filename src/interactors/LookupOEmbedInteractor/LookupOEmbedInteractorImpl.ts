@@ -1,8 +1,9 @@
+import { OembedDomain } from '../../domains/index.js';
+import { OembedDomainInterface } from '../../domains/types.js';
 import {
   OEmbedRepositoryInterface,
-  OembedType,
   ProviderRepositoryInterface,
-} from '../../types.js';
+} from '../../repositories/types.js';
 import { LookupOEmbedInteractorInterface } from './LookupOEmbedInteractorInterface.js';
 
 export class LookupOEmbedInteractorImpl
@@ -20,14 +21,11 @@ export class LookupOEmbedInteractorImpl
     this.oEmbedRepository = oEmbedRepository;
   }
 
-  async invoke(url: string): Promise<OembedType> {
+  async invoke(url: string): Promise<OembedDomainInterface> {
     const providers = await this.providerRepository.invoke(url);
-    if (providers.length === 0 || providers[0].endpoints.length === 0)
-      return {
-        height: null,
-        width: null,
-        html: '',
-      };
+    if (providers.length === 0 || providers[0].endpoints.length === 0) {
+      return new OembedDomain({});
+    }
     return this.oEmbedRepository?.invoke(
       `${providers[0].endpoints[0].url}?url=${url}`
     );

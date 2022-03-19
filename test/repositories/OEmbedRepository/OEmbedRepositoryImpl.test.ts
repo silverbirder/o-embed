@@ -42,6 +42,6 @@ describe('OEmbedRepository', () => {
     const actual = await repository.invoke('');
 
     // Assert
-    expect(actual).to.not.be.property('html');
+    expect(actual.html).to.be.equal('');
   });
 });

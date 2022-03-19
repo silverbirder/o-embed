@@ -1,11 +1,11 @@
+import { OembedDomainInterface } from '../../domains/types.js';
 import {
   OEmbedRepositoryInterface,
-  OembedType,
   ProviderRepositoryInterface,
-} from '../../types.js';
+} from '../../repositories/types.js';
 
 export interface LookupOEmbedInteractorInterface {
   providerRepository: ProviderRepositoryInterface;
   oEmbedRepository: OEmbedRepositoryInterface;
-  invoke(src: string): Promise<OembedType>;
+  invoke(src: string): Promise<OembedDomainInterface>;
 }

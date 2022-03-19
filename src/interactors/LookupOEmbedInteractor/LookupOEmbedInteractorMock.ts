@@ -1,8 +1,8 @@
+import { OembedDomainInterface } from '../../domains/types.js';
 import {
   OEmbedRepositoryInterface,
-  OembedType,
   ProviderRepositoryInterface,
-} from '../../types.js';
+} from '../../repositories/types.js';
 import { LookupOEmbedInteractorInterface } from './LookupOEmbedInteractorInterface.js';
 
 export class LookupOEmbedInteractorMock
@@ -12,9 +12,9 @@ export class LookupOEmbedInteractorMock
 
   oEmbedRepository: OEmbedRepositoryInterface;
 
-  return: OembedType = {
-    height: null,
-    width: null,
+  return: OembedDomainInterface = {
+    height: '0px',
+    width: '0px',
     html: '',
   };
 
@@ -27,7 +27,7 @@ export class LookupOEmbedInteractorMock
   }
 
   // eslint-disable-next-line class-methods-use-this,@typescript-eslint/no-unused-vars
-  async invoke(url: string): Promise<OembedType> {
+  async invoke(url: string): Promise<OembedDomainInterface> {
     return this.return;
   }
 }
