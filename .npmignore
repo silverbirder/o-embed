@@ -1,4 +1,5 @@
 .storybook
+.vscode
 coverage
 demo
 dist/stories
