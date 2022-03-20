@@ -14,7 +14,7 @@ oEmbed means the following.
 
 For example, in the case of Tweet, you will see the following embed.
 
-![open wc tweet](https://res.cloudinary.com/silverbirder/image/upload/v1647767845/github.com/o-embed/open-wc-tweet.png)
+![open wc tweet](https://res.cloudinary.com/silverbirder/image/upload/h_512/v1647767845/github.com/o-embed/open-wc-tweet.png)
 
 The URL for the Tweet is bellow.
 
