@@ -45,7 +45,7 @@ url=https://twitter.com/openwc/status/1427617679427440643`
 |Attribute|Type|Required|Default|Description|
 |--|--|--|--|--|
 |src|*String*|true|`""`|URL to embed.</br>It must be supported by the provider.|
-|proxy|*String*|true|`""`|URL of proxy.</br>The details is [here(Proxy)](./#Proxy).|
+|proxy|*String*|true|`""`|URL of proxy.</br>The details is [here(Proxy)](#Proxy).|
 |height|*String*|false|`""`|height of iframe|
 |weight|*String*|false|`""`|weight of iframe|
 |provider|*String*|false|`"https://oembed.com/providers.json"`|URL of providers|
@@ -68,9 +68,9 @@ url=https://twitter.com/openwc/status/1427617679427440643`
 
 |Slot|Condition|
 |--|--|
-|loading|While loading `src` attribute.|
-|notFound|The read `src` attribute does not exist.|
-|error|When unknown errors occur.|
+|loading|While loading `src`|
+|notFound|Provider of `src` does not exist|
+|error|When unknown errors occur|
 
 ## Installation
 
