@@ -1,0 +1,18 @@
+{
+  "name": "@silverbirder/o-embed",
+  "description": "Webcomponent o-embed following open-wc recommendations",
+  "main": "dist/src/index.js",
+  "authors": [
+    "silverbirder"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Silver-birder/o-embed",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
