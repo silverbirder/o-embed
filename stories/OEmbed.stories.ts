@@ -24,11 +24,16 @@ const Template: Story<ArgTypes> = ({
   proxy,
   provider,
 }: ArgTypes) => html`
-  <o-embed .src=${src} .height=${height} .proxy=${proxy} .provider=${provider}>
+  <o-embedly
+    .src=${src}
+    .height=${height}
+    .proxy=${proxy}
+    .provider=${provider}
+  >
     <p slot="loading">Loading...</p>
     <p slot="notFound">Not Found</p>
     <p slot="error">Error</p>
-  </o-embed>
+  </o-embedly>
 `;
 const proxy = 'https://silverbirder-cors-anywhere.herokuapp.com';
 

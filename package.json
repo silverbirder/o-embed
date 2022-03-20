@@ -1,15 +1,15 @@
 {
-  "name": "@silverbirder/o-embed",
-  "description": "Webcomponent o-embed following open-wc recommendations",
+  "name": "o-embedly",
+  "description": "Webcomponent o-embedly following open-wc recommendations",
   "license": "MIT",
   "author": "silverbirder",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "exports": {
     ".": "./dist/src/index.js",
-    "./o-embed.js": "./dist/src/o-embed.js"
+    "./o-embedly.js": "./dist/src/o-embed.js"
   },
   "scripts": {
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",
