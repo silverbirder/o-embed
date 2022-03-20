@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/Silver-birder/o-embed/branch/main/graph/badge.svg?token=52D9NYB4TO)](https://codecov.io/gh/Silver-birder/o-embed)
+[![storybook](https://raw.githubusercontent.com/storybookjs/brand/master/badge/badge-storybook.svg)](https://www.chromatic.com/library?appId=6235dbeee943ba003aa9a965)
+
 # \<o-embed>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
