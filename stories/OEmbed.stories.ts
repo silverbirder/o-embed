@@ -20,10 +20,24 @@ interface ArgTypes {
 const Template: Story<ArgTypes> = ({ src, height, proxy }: ArgTypes) => html`
   <o-embed .src=${src} .height=${height} .proxy=${proxy}></o-embed>
 `;
+const proxy = 'https://silverbirder-cors-anywhere.herokuapp.com';
 
-export const Regular = Template.bind({});
-Regular.args = {
+export const Twitter = Template.bind({});
+Twitter.args = {
   src: 'https://twitter.com/silver_birder/status/1176375655237214209',
-  height: '800px',
-  proxy: 'https://silverbirder-cors-anywhere.herokuapp.com',
+  height: '900px',
+  proxy,
+};
+
+export const Youtube = Template.bind({});
+Youtube.args = {
+  src: 'https://www.youtube.com/watch?v=YBwgkr_Sbx0',
+  proxy,
+};
+
+export const Speakerdeck = Template.bind({});
+Speakerdeck.args = {
+  src: 'https://speakerdeck.com/silverbirder/micro-frontends-on-kubernetes-trial',
+  height: '500px',
+  proxy,
 };

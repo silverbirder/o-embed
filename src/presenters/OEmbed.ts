@@ -37,7 +37,7 @@ export class OEmbed extends LitElement {
   }
 
   async willUpdate(changedProperties: PropertyValues) {
-    if (changedProperties.has('src')) {
+    if (changedProperties.has('src') || changedProperties.has('proxy')) {
       this._oembed = await this._interactor?.invoke(this.src);
     }
   }
