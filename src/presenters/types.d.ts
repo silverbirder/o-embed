@@ -1,3 +1,3 @@
-type LoadingStatus = 'loading' | 'loaded' | 'error';
+type Status = 'loading' | 'loaded' | 'notFound' | 'error';
 
-export { LoadingStatus };
+export { Status };

@@ -5,7 +5,7 @@ import { LookupOEmbedInteractor } from '../interactors/index.js';
 import { LookupOEmbedInteractorInterface } from '../interactors/types.js';
 import { OEmbedRepository, ProviderRepository } from '../repositories/index.js';
 import { UnitValue } from '../utils/types.js';
-import { LoadingStatus } from './types.js';
+import { Status } from './types.js';
 
 export class OEmbed extends LitElement {
   static styles = css`
@@ -24,7 +24,7 @@ export class OEmbed extends LitElement {
 
   @property({ type: Object }) _oembed: OembedDomainInterface | undefined;
 
-  @property({ type: String }) _status: LoadingStatus = 'loading';
+  @property({ type: String }) _status: Status = 'loading';
 
   _interactor: LookupOEmbedInteractorInterface | undefined;
 
@@ -49,6 +49,10 @@ export class OEmbed extends LitElement {
     this._interactor
       ?.invoke(this.src)
       .then(oembed => {
+        if (oembed.html === '') {
+          this._status = 'notFound';
+          return;
+        }
         this._oembed = oembed;
         this._status = 'loaded';
       })
@@ -61,6 +65,8 @@ export class OEmbed extends LitElement {
     switch (this._status) {
       case 'loading':
         return html` <slot name="loading"></slot>`;
+      case 'notFound':
+        return html` <slot name="notFound"></slot>`;
       case 'error':
         return html` <slot name="error"></slot>`;
       default:

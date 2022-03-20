@@ -20,6 +20,7 @@ interface ArgTypes {
 const Template: Story<ArgTypes> = ({ src, height, proxy }: ArgTypes) => html`
   <o-embed .src=${src} .height=${height} .proxy=${proxy}>
     <p slot="loading">Loading...</p>
+    <p slot="notFound">Not Found</p>
     <p slot="error">Error</p>
   </o-embed>
 `;
@@ -41,6 +42,20 @@ Youtube.args = {
 export const Speakerdeck = Template.bind({});
 Speakerdeck.args = {
   src: 'https://speakerdeck.com/silverbirder/micro-frontends-on-kubernetes-trial',
+  height: '500px',
+  proxy,
+};
+
+export const Hatena = Template.bind({});
+Hatena.args = {
+  src: 'https://silverbirder180.hatenablog.com/entry/2020/05/04/182921',
+  height: '500px',
+  proxy,
+};
+
+export const NotFoundProvider = Template.bind({});
+NotFoundProvider.args = {
+  src: 'https://example.com/',
   height: '500px',
   proxy,
 };

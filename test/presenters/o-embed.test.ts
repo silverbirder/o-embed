@@ -46,6 +46,7 @@ describe('OEmbed', () => {
     const el = await fixture<OEmbed>(
       html`<o-embed ._interactor=${interactor}>
         <p slot="loading">Loading...</p>
+        <p slot="notFound">Not Found</p>
         <p slot="error">Error</p>
       </o-embed>`
     );
@@ -58,6 +59,36 @@ describe('OEmbed', () => {
     await expect(
       el.shadowRoot?.querySelector('slot')?.getAttribute('name')
     ).to.be.equal('loading');
+  });
+
+  it('loading status is not found.', async () => {
+    // Arrange
+    const interactor = new LookupOEmbedInteractorMock(
+      new ProviderRepositoryMock(''),
+      new OEmbedRepositoryMock('')
+    );
+    const mockHtml = '<span>hello</span>';
+    interactor.return = {
+      height: '0px',
+      width: '0px',
+      html: mockHtml,
+    };
+    const el = await fixture<OEmbed>(
+      html`<o-embed ._interactor=${interactor}>
+        <p slot="loading">Loading...</p>
+        <p slot="notFound">Not Found</p>
+        <p slot="error">Error</p>
+      </o-embed>`
+    );
+
+    // Act
+    el._status = 'notFound';
+    await elementUpdated(el);
+
+    // Assert
+    await expect(
+      el.shadowRoot?.querySelector('slot')?.getAttribute('name')
+    ).to.be.equal('notFound');
   });
 
   it('loading status is error.', async () => {
@@ -75,6 +106,7 @@ describe('OEmbed', () => {
     const el = await fixture<OEmbed>(
       html`<o-embed ._interactor=${interactor}>
         <p slot="loading">Loading...</p>
+        <p slot="notFound">Not Found</p>
         <p slot="error">Error</p>
       </o-embed>`
     );
