@@ -15,10 +15,16 @@ interface ArgTypes {
   src: string;
   height: string;
   proxy: string;
+  provider: string;
 }
 
-const Template: Story<ArgTypes> = ({ src, height, proxy }: ArgTypes) => html`
-  <o-embed .src=${src} .height=${height} .proxy=${proxy}>
+const Template: Story<ArgTypes> = ({
+  src,
+  height,
+  proxy,
+  provider,
+}: ArgTypes) => html`
+  <o-embed .src=${src} .height=${height} .proxy=${proxy} .provider=${provider}>
     <p slot="loading">Loading...</p>
     <p slot="notFound">Not Found</p>
     <p slot="error">Error</p>
@@ -46,11 +52,15 @@ Speakerdeck.args = {
   proxy,
 };
 
+const provider =
+  'https://gist.githubusercontent.com/Silver-birder/4575171d72cd1b0293c7de0913edb6f9/raw/43e1bfb12c96ddf9f71afb8587476ce62e1c8b09/oEmbedProviders.json';
+
 export const Hatena = Template.bind({});
 Hatena.args = {
   src: 'https://silverbirder180.hatenablog.com/entry/2020/05/04/182921',
-  height: '500px',
+  height: '200px',
   proxy,
+  provider,
 };
 
 export const NotFoundProvider = Template.bind({});

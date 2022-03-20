@@ -6,10 +6,11 @@ import { ProviderRepositoryInterface } from './ProviderRepositoryInterface.js';
 export class ProviderRepositoryImpl implements ProviderRepositoryInterface {
   proxy: string = '';
 
-  provider: string = 'https://oembed.com/providers.json';
+  provider: string = '';
 
-  constructor(proxy: string) {
+  constructor(proxy: string, provider?: string) {
     this.proxy = proxy;
+    this.provider = provider || 'https://oembed.com/providers.json';
   }
 
   async _fetch(): Promise<Array<ProviderType>> {

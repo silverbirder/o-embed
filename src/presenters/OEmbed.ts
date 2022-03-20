@@ -22,6 +22,8 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) proxy: string = '';
 
+  @property({ type: String }) provider: string = '';
+
   @property({ type: Object }) _oembed: OembedDomainInterface | undefined;
 
   @property({ type: String }) _status: Status = 'loading';
@@ -32,7 +34,7 @@ export class OEmbed extends LitElement {
     super.connectedCallback();
     if (this._interactor === undefined) {
       this._interactor = new LookupOEmbedInteractor(
-        new ProviderRepository(this.proxy),
+        new ProviderRepository(this.proxy, this.provider),
         new OEmbedRepository(this.proxy)
       );
     }
