@@ -40,7 +40,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   // ],
 
   reporters: [
-    defaultReporter({ reportTestResults: false, reportTestProgress: true }),
+    defaultReporter({ reportTestResults: true, reportTestProgress: true }),
     junitReporter({
       outputPath: './coverage/test-results.xml',
       reportLogs: true,

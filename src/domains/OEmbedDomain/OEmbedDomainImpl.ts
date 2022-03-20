@@ -1,4 +1,4 @@
-import { UnitValue } from '../../types.js';
+import { UnitValue } from '../../utils/types.js';
 import { OembedDomainInterface } from './OEmbedDomainInterface.js';
 
 export class OembedDomainImpl implements OembedDomainInterface {

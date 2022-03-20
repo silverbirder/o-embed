@@ -18,7 +18,10 @@ interface ArgTypes {
 }
 
 const Template: Story<ArgTypes> = ({ src, height, proxy }: ArgTypes) => html`
-  <o-embed .src=${src} .height=${height} .proxy=${proxy}></o-embed>
+  <o-embed .src=${src} .height=${height} .proxy=${proxy}>
+    <p slot="loading">Loading...</p>
+    <p slot="error">Error</p>
+  </o-embed>
 `;
 const proxy = 'https://silverbirder-cors-anywhere.herokuapp.com';
 

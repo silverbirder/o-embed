@@ -1,4 +1,4 @@
-import { UnitValue } from '../types.js';
+import { UnitValue } from '../utils/types.js';
 import { OEmbedRepositoryInterface } from './OEmbedRepository/OEmbedRepositoryInterface.js';
 import { ProviderRepositoryInterface } from './ProviderRepository/ProviderRepositoryInterface.js';
 
