@@ -32,6 +32,10 @@ export class OEmbed extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    if (!this.proxy || !this.src) {
+      this.remove();
+      return;
+    }
     if (this._interactor === undefined) {
       this._interactor = new LookupOEmbedInteractor(
         new ProviderRepository(this.proxy, this.provider),
