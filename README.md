@@ -1,3 +1,4 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Silver-birder/o-embed)
 [![codecov](https://codecov.io/gh/Silver-birder/o-embed/branch/main/graph/badge.svg?token=52D9NYB4TO)](https://codecov.io/gh/Silver-birder/o-embed)
 [![storybook](https://raw.githubusercontent.com/storybookjs/brand/master/badge/badge-storybook.svg)](https://www.chromatic.com/library?appId=6235dbeee943ba003aa9a965)
 
