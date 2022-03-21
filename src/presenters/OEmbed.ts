@@ -9,6 +9,19 @@ import { Status } from './types.js';
 
 export class OEmbed extends LitElement {
   static styles = css`
+    .container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    .responsive {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
     iframe {
       border: none;
     }
@@ -68,6 +81,9 @@ export class OEmbed extends LitElement {
   }
 
   switchRender() {
+    const width = this.width ? this.width : this._oembed?.width;
+    const height = this.height ? this.height : this._oembed?.height;
+
     switch (this._status) {
       case 'loading':
         return html` <slot name="loading"></slot>`;
@@ -77,16 +93,29 @@ export class OEmbed extends LitElement {
         return html` <slot name="error"></slot>`;
       default:
         return html`<iframe
+          class="responsive"
           title="content"
           srcdoc="${this._oembed?.html}"
           loading="lazy"
-          width="${this.width ? this.width : this._oembed?.width}"
-          height="${this.height ? this.height : this._oembed?.height}"
+          width="${width}"
+          height="${height}"
         ></iframe>`;
     }
   }
 
+  containerRender() {
+    const width = this.width ? this.width : this._oembed?.width;
+    const height = this.height ? this.height : this._oembed?.height;
+    const iframeCss = [];
+    iframeCss.push(`padding-left: ${width};`);
+    iframeCss.push(`padding-top: ${height};`);
+
+    return html`<div class="container" style="${iframeCss.join('')}">
+      ${this.switchRender()}
+    </div>`;
+  }
+
   render() {
-    return this.switchRender();
+    return this.containerRender();
   }
 }
