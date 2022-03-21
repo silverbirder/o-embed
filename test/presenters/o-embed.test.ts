@@ -22,13 +22,33 @@ describe('OEmbed', () => {
 
     // Act
     const el = await fixture<OEmbed>(
-      html`<o-embed ._interactor=${interactor}></o-embed>`
+      html`<o-embed
+        proxy="http://proxy"
+        src="http://src"
+        ._interactor=${interactor}
+      ></o-embed>`
     );
 
     // Assert
     await expect(
       el.shadowRoot?.querySelector('iframe')?.getAttribute('srcdoc')
     ).to.be.equal(mockHtml);
+  });
+
+  it('not render to not have proxy attribute.', async () => {
+    // Arrange
+    const interactor = new LookupOEmbedInteractorMock(
+      new ProviderRepositoryMock(''),
+      new OEmbedRepositoryMock('')
+    );
+
+    // Act
+    const el = await fixture<OEmbed>(
+      html`<o-embed src="http://src" ._interactor=${interactor}></o-embed>`
+    );
+
+    // Assert
+    await expect(el).to.be.equal(null);
   });
 
   it('loading status is loading.', async () => {
@@ -44,7 +64,11 @@ describe('OEmbed', () => {
       html: mockHtml,
     };
     const el = await fixture<OEmbed>(
-      html`<o-embed ._interactor=${interactor}>
+      html`<o-embed
+        proxy="http://proxy"
+        src="http://src"
+        ._interactor=${interactor}
+      >
         <p slot="loading">Loading...</p>
         <p slot="notFound">Not Found</p>
         <p slot="error">Error</p>
@@ -74,7 +98,11 @@ describe('OEmbed', () => {
       html: mockHtml,
     };
     const el = await fixture<OEmbed>(
-      html`<o-embed ._interactor=${interactor}>
+      html`<o-embed
+        proxy="http://proxy"
+        src="http://src"
+        ._interactor=${interactor}
+      >
         <p slot="loading">Loading...</p>
         <p slot="notFound">Not Found</p>
         <p slot="error">Error</p>
@@ -104,7 +132,11 @@ describe('OEmbed', () => {
       html: mockHtml,
     };
     const el = await fixture<OEmbed>(
-      html`<o-embed ._interactor=${interactor}>
+      html`<o-embed
+        proxy="http://proxy"
+        src="http://src"
+        ._interactor=${interactor}
+      >
         <p slot="loading">Loading...</p>
         <p slot="notFound">Not Found</p>
         <p slot="error">Error</p>
