@@ -10,6 +10,7 @@ import { Status } from './types.js';
 export class OEmbed extends LitElement {
   static styles = css`
     iframe {
+      max-width: 100%;
       border: none;
     }
   `;
