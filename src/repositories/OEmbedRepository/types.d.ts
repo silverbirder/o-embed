@@ -4,6 +4,7 @@ type OembedType = {
   height: UnitValue;
   width: UnitValue;
   html: string;
+  providerName: string;
 };
 
 export { OembedType };

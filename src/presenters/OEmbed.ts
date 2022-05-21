@@ -29,6 +29,8 @@ export class OEmbed extends LitElement {
 
   @property({ type: String }) _status: Status = 'loading';
 
+  @property({ type: String }) _view: String = 'opacity:0;';
+
   _interactor: LookupOEmbedInteractorInterface | undefined;
 
   async connectedCallback() {
@@ -37,6 +39,7 @@ export class OEmbed extends LitElement {
       this.remove();
       return;
     }
+    this._onLoadHandler = this._onLoadHandler.bind(this);
     if (this._interactor === undefined) {
       this._interactor = new LookupOEmbedInteractor(
         new ProviderRepository(this.proxy, this.provider),
@@ -62,10 +65,30 @@ export class OEmbed extends LitElement {
         }
         this._oembed = oembed;
         this._status = 'loaded';
+        this.shadowRoot
+          ?.querySelector('iframe')
+          ?.addEventListener('load', this._onLoadHandler);
       })
       .catch(() => {
         this._status = 'error';
       });
+  }
+
+  _onLoadHandler() {
+    switch (this._oembed?.providerName) {
+      case 'Twitter':
+        //@ts-ignore
+        this.shadowRoot
+          ?.querySelector('iframe')
+          //@ts-ignore
+          ?.contentWindow.twttr.events.bind('rendered', () => {
+            this._view = 'opacity:1.0;';
+          });
+        break;
+      default:
+        this._view = 'opacity:1.0;';
+        break;
+    }
   }
 
   switchRender() {
@@ -86,6 +109,7 @@ export class OEmbed extends LitElement {
           loading="lazy"
           width="${width}"
           height="${height}"
+          style="${this._view}"
         ></iframe>`;
     }
   }

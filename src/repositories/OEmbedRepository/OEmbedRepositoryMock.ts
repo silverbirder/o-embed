@@ -13,7 +13,12 @@ export class OEmbedRepositoryMock implements OEmbedRepositoryInterface {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   get(src: string): Promise<OembedDomain> {
     return new Promise(resolve => {
-      resolve({ html: this.html, width: '0px', height: '0px' });
+      resolve({
+        html: this.html,
+        width: '0px',
+        height: '0px',
+        providerName: '',
+      });
     });
   }
 }

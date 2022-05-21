@@ -10,9 +10,11 @@ export class OEmbedRepositoryImpl implements OEmbedRepositoryInterface {
   }
 
   async _fetch(src: string): Promise<OembedType> {
-    return (
+    const j = await (
       await fetch(`${this.proxy}/${src}`, { headers: { Origin: 'null' } })
     ).json();
+    j.providerName = j.provider_name;
+    return j;
   }
 
   async get(src: string): Promise<OembedDomain> {
@@ -21,6 +23,7 @@ export class OEmbedRepositoryImpl implements OEmbedRepositoryInterface {
       html: response.html,
       height: response.height,
       width: response.width,
+      providerName: response.providerName,
     });
     return oembedDomain;
   }

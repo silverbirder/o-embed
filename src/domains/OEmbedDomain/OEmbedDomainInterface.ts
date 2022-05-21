@@ -4,4 +4,5 @@ export interface OembedDomainInterface {
   html?: string;
   height?: UnitValue;
   width?: UnitValue;
+  providerName?: string;
 }
